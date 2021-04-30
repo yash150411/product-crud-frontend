@@ -6,7 +6,7 @@ function LayoutWrapper({title, children}) {
       <div style={{backgroundColor:'#D3D2F7', padding:'10px', borderTopLeftRadius:'25px', borderTopRightRadius:'25px'}}>
         <h3 style={{margin:'0'}}>{title}</h3>
       </div>
-      <div style={{padding:'10px', backgroundColor: 'white',borderBottomLeftRadius:'25px', borderBottomRightRadius:'25px'}}>
+      <div style={{padding:'10px', backgroundColor: 'white',borderBottomLeftRadius:'25px', borderBottomRightRadius:'25px', overflow:'scroll'}}>
         {children}
       </div>
     </div>

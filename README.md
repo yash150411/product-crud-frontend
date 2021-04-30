@@ -28,10 +28,10 @@ For my backend repo product-crud-backend you can copy environment variable as
 
 - REACT_APP_API_URL=http://localhost:3028/api
 
-## So now as the environment variables are set you can run the start script for development environment
+### So now as the environment variables are set you can run the start script for development environment
 
 - npm run start
 
 ### This will start the React app on port 3000
 
-## Yeah! Its done.
+# Yeah! Its done.

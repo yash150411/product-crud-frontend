@@ -1,0 +1,19 @@
+.form-fields-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.field-group-wrapper {
+  width: 100%;
+  margin: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .form-fields-wrapper {
+    flex-direction: column;
+  }
+
+  .field-group-wrapper {
+    margin: 0px;
+  }
+}

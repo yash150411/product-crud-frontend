@@ -69,7 +69,7 @@ function FinalProducts({initialRecords, totalProductsCount, startEditProduct}) {
 
   return (
     <LayoutWrapper title='Products'>
-      <Paper>
+      <Paper style={{overflow:'scroll'}}>
         <Toolbar>
           <Controls.Input 
             label="Search Products" 

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import * as productService from '../../../services/products';
 import useTable from '../../../components/useTable';
+import './style.css';
 
 function AddProduct({productAdded}) {
 
@@ -38,11 +39,10 @@ function AddProduct({productAdded}) {
   return (
     <LayoutWrapper title='Add Product'>
       <form onSubmit={handleSubmit(submitForm)}>
-        <div style={{display:'flex', justifyContent:'space-evenly'}}>
+        <div className="form-fields-wrapper">
 
-          <div style={{width:'100%', margin:'10px'}}>
+          <div className="field-group-wrapper">
             <div>
-              {/* <button>Upload Image</button> */}
               <input type="text" name="productName" placeholder="Product Name" {...register('productName', { required: true, minLength: 4 })}/>
               {errors.productName && <p className="error-message"> Product name is required.</p>}
             </div>
@@ -52,7 +52,7 @@ function AddProduct({productAdded}) {
             </div>
           </div>
 
-          <div style={{width:'100%', margin:'10px'}}>
+          <div className="field-group-wrapper">
             <div>
               <input type="number" name="price" placeholder="Price" min="0" {...register('price', {required: true})}/>
               {errors.price && <p className="error-message">Price is required.</p>}
@@ -63,8 +63,8 @@ function AddProduct({productAdded}) {
             </div>
           </div>
 
-          <div style={{width:'100%', margin:'10px'}}>
-            <input name="productImage" style={{margin:'5px'}} type="file" placeholder="Product Image" accept="image/x-png,image/jpeg" {...register('productImage', { required: true })}/>
+          <div className="field-group-wrapper">
+            <input name="productImage" type="file" placeholder="Product Image" accept="image/x-png,image/jpeg" {...register('productImage', { required: true })}/>
             {errors.productImage && <p className="error-message"> Product image is required.</p>}
           </div>
 
@@ -75,7 +75,6 @@ function AddProduct({productAdded}) {
             ? <Button startIcon={<SaveIcon/>} variant="contained" color="secondary" disabled>Saving Product</Button>
             : <Button startIcon={<SaveIcon/>} variant="contained" color="primary" type="submit">Add Product</Button>
           }
-          
         </div>
       </form>
     </LayoutWrapper>

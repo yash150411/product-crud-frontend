@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import * as productService from '../../../services/products';
 import useTable from '../../../components/useTable';
+import '../add-product/style.css';
 
 function EditProduct({productEdited, product}) {
 
@@ -70,33 +71,47 @@ function EditProduct({productEdited, product}) {
   return (
     <LayoutWrapper title='Edit Product'>
       <form onSubmit={handleSubmit(submitForm)}>
-        <div style={{display:'flex', justifyContent:'space-evenly'}}>
+        <div className="form-fields-wrapper">
 
-          <div style={{width:'100%', margin:'10px'}}>
+          <div className="field-group-wrapper">
             <div>
-              {/* <button>Upload Image</button> */}
-              <input type="text" name="productName" defaultValue={product.productName} placeholder="Product Name" {...register('productName', { required: true, minLength: 4 })}/>
+              <input type="text" name="productName" 
+                defaultValue={product.productName} placeholder="Product Name" 
+                {...register('productName', { required: true, minLength: 4 })}
+              />
               {errors.productName && <p className="error-message"> Product name is required.</p>}
             </div>
             <div>
-              <input type="text" name="description" defaultValue={product.description} placeholder="Description" {...register('description', {required: true, minLength: 4})}/>
+              <input type="text" name="description" 
+                defaultValue={product.description} placeholder="Description" 
+                {...register('description', {required: true, minLength: 4})}
+              />
               {errors.description && <p className="error-message">Description is required.</p>}
             </div>
           </div>
 
-          <div style={{width:'100%', margin:'10px'}}>
+          <div className="field-group-wrapper">
             <div>
-              <input type="number" name="price" defaultValue={product.price} placeholder="Price" min="0" {...register('price', {required: true})}/>
+              <input type="number" name="price" 
+                defaultValue={product.price} placeholder="Price" min="0" 
+                {...register('price', {required: true})}
+              />
               {errors.price && <p className="error-message">Price is required.</p>}
             </div>
             <div>
-              <input type="number" name="quantity" defaultValue={product.quantity} placeholder="Quantity" min="0" {...register('quantity', {required: true})}/>
+              <input type="number" name="quantity" 
+                defaultValue={product.quantity} placeholder="Quantity" min="0" 
+                {...register('quantity', {required: true})}
+              />
               {errors.quantity && <p className="error-message">Quantity is required.</p>}
             </div>
           </div>
 
-          <div style={{width:'100%', margin:'10px'}}>
-            <input name="productImage" style={{margin:'5px'}} type="file" placeholder="Product Image" accept="image/x-png,image/jpeg" {...register('productImage', {required: false})}/>
+          <div className="field-group-wrapper">
+            <input name="productImage" type="file" 
+              placeholder="Product Image" accept="image/x-png,image/jpeg" 
+              {...register('productImage', {required: false})}
+            />
             {errors.productImage && <p className="error-message"> Product image is required.</p>}
           </div>
 
@@ -104,10 +119,13 @@ function EditProduct({productEdited, product}) {
 
         <div style={{display:'flex', justifyContent: 'center'}}>
           {loading 
-            ? <Button startIcon={<SaveIcon/>} variant="contained" color="secondary" disabled>Edit Product</Button>
-            : <Button startIcon={<SaveIcon/>} variant="contained" color="primary" type="submit">Edit Product</Button>
+            ? <Button startIcon={<SaveIcon/>} variant="contained" color="secondary" disabled>
+                Edit Product
+              </Button>
+            : <Button startIcon={<SaveIcon/>} variant="contained" color="primary" type="submit">
+                Edit Product
+              </Button>
           }
-          
         </div>
       </form>
     </LayoutWrapper>
