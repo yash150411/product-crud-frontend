@@ -28,6 +28,7 @@ const headCells = [
 ]
 
 function FinalProducts({initialRecords, totalProductsCount, startEditProduct}) {
+  
   const classes = useStyles();
   const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
   const [records,setRecords] = useState(initialRecords);
