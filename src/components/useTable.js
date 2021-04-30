@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as productService from '../services/products';
 import { makeStyles, Table, TableCell, TableHead, TablePagination, TableRow, TableSortLabel } from '@material-ui/core'
 
@@ -123,6 +123,15 @@ function useTable(records,headCells, filterFn, totalCount) {
       setPropsRecords(newproducts);
     }
   }
+  const editProduct = (data) => {
+    if(propsRecords.length > 0){
+      const removeProduct = records.filter(p => {
+        return p._id !== data._id;
+      });
+      const newProducts = [data, ...removeProduct];
+      setPropsRecords(newProducts);
+    }
+  }
 
   const deleteProduct = (productId) => {
     const newProducts = propsRecords.filter((x) => {
@@ -143,7 +152,7 @@ function useTable(records,headCells, filterFn, totalCount) {
     TableContainer,
     TblHead,
     TblPagination,
-    recordsAfterPagingAndSorting, deleteProduct, addProduct
+    recordsAfterPagingAndSorting, deleteProduct, addProduct, editProduct
   }  
 }
 

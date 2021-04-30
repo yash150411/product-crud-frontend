@@ -27,7 +27,7 @@ const headCells = [
   {id: 'actions', label: 'Actions', disableSorting: true}
 ]
 
-function FinalProducts({initialRecords, totalProductsCount}) {
+function FinalProducts({initialRecords, totalProductsCount, startEditProduct}) {
   const classes = useStyles();
   const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
   const [records,setRecords] = useState(initialRecords);
@@ -38,7 +38,7 @@ function FinalProducts({initialRecords, totalProductsCount}) {
     let target = e.target;
     setFilterFn({
       fn: items => {
-        if (target.value == "")
+        if (target.value === "")
             return items;
         else
             return items.filter(x => x.productName.toLowerCase().includes(target.value))
@@ -95,7 +95,7 @@ function FinalProducts({initialRecords, totalProductsCount}) {
                 <TableCell>{product.price}</TableCell>
                 <TableCell>{product.quantity}</TableCell>
                 <TableCell>
-                  <Button startIcon={<EditIcon/>} color="primary"/>
+                  <Button onClick={() => {window.scrollTo(0,0);startEditProduct(product)}} startIcon={<EditIcon/>} color="primary"/>
                   <Button onClick={() => deleteProductFromDb(product._id)} startIcon={<DeleteIcon/>} color="secondary"/>
                 </TableCell>
               </TableRow>
@@ -115,7 +115,7 @@ function Loading() {
   )
 }
 
-const Products = React.forwardRef((props,ref) => {
+const Products = React.forwardRef(({startEditProduct},ref) => {
   const [loading,setLoading] = useState(true);
   const [records, setRecords] = useState();
   const [totalCount, setTotalCount ] = useState();
@@ -127,7 +127,16 @@ const Products = React.forwardRef((props,ref) => {
       setRecords(newRecords);
       setTotalCount(totalCount + 1);
       setLoading(false);
-    }
+    },
+    editProduct(data) {
+      const removeProduct = records.filter(p => {
+        return p._id !== data._id;
+      });
+      const newRecords = [data, ...removeProduct];
+      setLoading(true);
+      setRecords(newRecords);
+      setLoading(false);
+    },
   }));
 
   const getProducts = async () => {
@@ -148,7 +157,7 @@ const Products = React.forwardRef((props,ref) => {
 
   return(
     <>
-      {loading ? <Loading/> : <FinalProducts initialRecords={records} totalProductsCount={totalCount}/>}
+      {loading ? <Loading/> : <FinalProducts initialRecords={records} totalProductsCount={totalCount} startEditProduct={startEditProduct}/>}
     </>
   )
   

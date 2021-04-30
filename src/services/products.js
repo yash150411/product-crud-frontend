@@ -65,14 +65,17 @@ export async function deleteProduct(productId) {
 }
 
 export async function editProduct(data) {
-  try{
-    const url = `${apiUrl}/edit-product`;
-    const insertResp = await axios({
-      method: 'patch', url,
-      data
-    })
-    console.log(insertResp);
-  }catch(e){
-    console.log(e);
-  }
+  return new Promise(async(resolve,reject) => {
+    try{
+      const url = `${apiUrl}/edit-product`;
+      const editResp = await axios({
+        method: 'patch', url,
+        data
+      })
+      resolve(editResp);
+    }catch(e){
+      console.log(e);
+    }
+  })
+  
 }
