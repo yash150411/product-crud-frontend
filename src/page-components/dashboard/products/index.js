@@ -64,7 +64,6 @@ function FinalProducts({initialRecords, totalProductsCount, startEditProduct}) {
   }
 
   useEffect(() => {
-
   },[totalProductsCount,initialRecords,records, filterFn])
 
   return (
