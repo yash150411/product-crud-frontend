@@ -43,28 +43,43 @@ function AddProduct({productAdded}) {
 
           <div className="field-group-wrapper">
             <div>
-              <input type="text" name="productName" placeholder="Product Name" {...register('productName', { required: true, minLength: 4 })}/>
+              <input type="text" name="productName" 
+                placeholder="Product Name" 
+                {...register('productName', { required: true, minLength: 4 })}
+              />
               {errors.productName && <p className="error-message"> Product name is required.</p>}
             </div>
             <div>
-              <input type="text" name="description" placeholder="Description" {...register('description', {required: true, minLength: 4})}/>
+              <input type="text" name="description" 
+                placeholder="Description" 
+                {...register('description', {required: true, minLength: 4})}
+              />
               {errors.description && <p className="error-message">Description is required.</p>}
             </div>
           </div>
 
           <div className="field-group-wrapper">
             <div>
-              <input type="number" name="price" placeholder="Price" min="0" {...register('price', {required: true})}/>
+              <input type="number" name="price" 
+                placeholder="Price" min="0" 
+                {...register('price', {required: true})}
+              />
               {errors.price && <p className="error-message">Price is required.</p>}
             </div>
             <div>
-              <input type="number" name="quantity" placeholder="Quantity" min="0" {...register('quantity', {required: true})}/>
+              <input type="number" name="quantity" 
+                placeholder="Quantity" min="0" 
+                {...register('quantity', {required: true})}
+              />
               {errors.quantity && <p className="error-message">Quantity is required.</p>}
             </div>
           </div>
 
           <div className="field-group-wrapper">
-            <input name="productImage" type="file" placeholder="Product Image" accept="image/x-png,image/jpeg" {...register('productImage', { required: true })}/>
+            <input name="productImage" type="file" 
+              placeholder="Product Image" accept="image/x-png,image/jpeg" 
+              {...register('productImage', { required: true })}
+            />
             {errors.productImage && <p className="error-message"> Product image is required.</p>}
           </div>
 
@@ -72,8 +87,12 @@ function AddProduct({productAdded}) {
 
         <div style={{display:'flex', justifyContent: 'center'}}>
           {loading 
-            ? <Button startIcon={<SaveIcon/>} variant="contained" color="secondary" disabled>Saving Product</Button>
-            : <Button startIcon={<SaveIcon/>} variant="contained" color="primary" type="submit">Add Product</Button>
+            ? <Button startIcon={<SaveIcon/>} variant="contained" color="secondary" disabled>
+                Saving Product
+              </Button>
+            : <Button startIcon={<SaveIcon/>} variant="contained" color="primary" type="submit">
+                Add Product
+              </Button>
           }
         </div>
       </form>

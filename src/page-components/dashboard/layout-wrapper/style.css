@@ -1,0 +1,24 @@
+.layout-wrapper {
+  border: 1px solid black;
+  border-radius: 25px;
+  margin: 15px 0px;
+}
+
+.layout-title-wrapper {
+  background-color: #d3d2f7;
+  padding: 10px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.layout-title {
+  margin: 0px;
+}
+
+.layout-children-wrapper {
+  padding: 10px;
+  background-color: white;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  overflow: scroll;
+}
